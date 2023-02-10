@@ -21,13 +21,16 @@ Settings::Settings()
 	ini::get_value(ini, bashThresholdApprentice, "Settings", "Bash Threshold : Apprentice", "; The current amount of 2 * health + stamina to bash a apprentice lock.");
 	ini::get_value(ini, bashThresholdAdept, "Settings", "Bash Threshold : Adept", "; The current amount of 2 * health + stamina to bash a adept lock.");
 
+	ini::get_value(ini, text, "Settings", "Message : Text", "; The text that is going to be displayed in the HUD. Don't forget to include spaces!");
+	ini::get_value(ini, delimiter, "Settings", "Message : Delimiter", "; The delimiter that is going to be displayed in the HUD. Don't forget to include spaces!");
+
 	(void)ini.SaveFile(path);
 }
 
 std::string Settings::Message(int a_playerStrength, int a_threshold) const
 {
 
-	return "\nBash Status : " + std::to_string(a_playerStrength).substr(0, std::to_string(a_playerStrength).find(".")) + " / " + std::to_string(a_threshold);
+	return "\n" + text + std::to_string(a_playerStrength).substr(0, std::to_string(a_playerStrength).find(".")) + delimiter + std::to_string(a_threshold);
 }
 
 int Settings::GetPlayerStrengthMax() const

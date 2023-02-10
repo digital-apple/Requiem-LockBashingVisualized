@@ -84,17 +84,21 @@ namespace Hooks::Update
 	{
 		static int64_t thunk(RE::PlayerCharacter* a_player)
 		{
-
 			const auto settings = Settings::GetSingleton();
 			auto crosshair = RE::CrosshairPickData::GetSingleton();
+			auto target = crosshair->target.get();
 
-			if (settings->GetTarget() == crosshair->target.get())
-			{
-				a_player->UpdateCrosshairs();
+			if (target) {
+				if (target.get()->IsLocked()) {
+					a_player->UpdateCrosshairs();
+				}
+
+				if (settings->GetTarget() == crosshair->target.get())
+				{
+					a_player->UpdateCrosshairs();
+				}
 			}
-
 			return func(a_player);
-
 		}
 		static inline REL::Relocation<decltype(thunk)> func;
 	};

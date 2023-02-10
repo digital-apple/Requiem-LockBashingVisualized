@@ -21,6 +21,9 @@ public:
 	int bashThresholdApprentice{ 450 };
 	int bashThresholdAdept{ 550 };
 
+	std::string text{ "Bash Status : " };
+	std::string delimiter{ " / " };
+
 	RE::TESObjectREFRPtr crosshairTarget{ nullptr };
 private:
 	const wchar_t* path{ L"Data/SKSE/Plugins/Requiem - Lock Bashing Visualized.ini" };
