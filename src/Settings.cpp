@@ -8,15 +8,6 @@ Settings* Settings::GetSingleton()
 
 Settings::Settings()
 {
-	auto dataHandler = RE::TESDataHandler::GetSingleton();
-
-	if (dataHandler->LookupLoadedModByName("3Tweaks_BTweaks")) {
-		RE::DebugNotification("Requiem - Lock Bashing Visualized: BTweaks detected, updating values...");
-		bashThresholdNovice = 450;
-		bashThresholdApprentice = 550;
-		bashThresholdAdept = 650;
-	}
-
 	CSimpleIniA ini;
 	ini.SetUnicode();
 
@@ -75,4 +66,11 @@ RE::TESObjectREFRPtr Settings::GetTarget() const
 void Settings::SetTarget(RE::TESObjectREFRPtr a_target)
 {
 	crosshairTarget = a_target;
+}
+
+void Settings::UpdateThresholds()
+{
+	bashThresholdNovice = 450;
+	bashThresholdApprentice = 550;
+	bashThresholdAdept = 650;
 }

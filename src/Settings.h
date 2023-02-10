@@ -11,6 +11,7 @@ public:
 	bool HasLockBashScript(RE::TESObjectREFR* a_objRefr) const;
 	RE::TESObjectREFRPtr GetTarget() const;
 	void SetTarget(RE::TESObjectREFRPtr);
+	void UpdateThresholds();
 
 	std::string colorBashDisallowed{ "#FF0000" };
 	std::string colorBashStandBy{ "#FFFF00" };

@@ -1,4 +1,4 @@
-# Bash Bug Fix
+Requiem - Lock Bashing Visualized
 
 * [SSE/AE](https://www.nexusmods.com/skyrimspecialedition/mods/84614)
 

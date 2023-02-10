@@ -58,13 +58,10 @@ namespace Hooks::SendHUDMessage
 						settings->SetTarget(crossHairRef);
 					}
 				}
-
+				
 				if (data->text.c_str() != currentText) {
 					data->text = currentText;
 				}
-
-			} else {
-				logger::info("SendHUDMessage    :    There is no data or crosshair ref");
 			}
 			func(a_this, a_menuName, a_type, a_data);
 		}

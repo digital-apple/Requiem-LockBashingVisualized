@@ -1,9 +1,17 @@
 #include "Hooks.h"
+#include "Settings.h"
 
 void OnInit(SKSE::MessagingInterface::Message* a_msg)
 {
 	if (a_msg->type == SKSE::MessagingInterface::kDataLoaded) {
 		Hooks::Install();
+
+		auto dataHandler = RE::TESDataHandler::GetSingleton();
+
+		if (dataHandler->LookupLoadedModByName("3Tweaks_BTweaks.esp")) {
+			logger::info("Requiem - Lock Bashing Visualized: BTweaks detected, updating values...");
+			Settings::GetSingleton()->UpdateThresholds();
+		}
 	}
 }
 
