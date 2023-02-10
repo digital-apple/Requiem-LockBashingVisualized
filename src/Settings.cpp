@@ -13,16 +13,16 @@ Settings::Settings()
 
 	ini.LoadFile(path);
 
-	ini::get_value(ini, colorBashDisallowed, "Settings", "Color : Can't Bash", "; The color you'll see when your current strength isn't enough to bash the lock.\n");
-	ini::get_value(ini, colorBashStandBy, "Settings", "Color : Bash Stand By", "; The color you'll see when you have the total strength to bash the lock, but you aren't ready yet.\n");
-	ini::get_value(ini, colorBashAllowed, "Settings", "Color : Bash Ready", "; The color you'll see when you are ready to bash the lock.\n");
+	ini::get_value(ini, colorBashDisallowed, "Settings", "Color : Can't Bash", "; The color you'll see when your current strength isn't enough to bash the lock.");
+	ini::get_value(ini, colorBashStandBy, "Settings", "Color : Bash Stand By", "; The color you'll see when you have the total strength to bash the lock, but you aren't ready yet.");
+	ini::get_value(ini, colorBashAllowed, "Settings", "Color : Bash Ready", "; The color you'll see when you are ready to bash the lock.");
 
 	ini::get_value(ini, bashThresholdNovice, "Settings", "Bash Threshold : Novice", "; The current amount of 2 * health + stamina to bash a novice lock.");
 	ini::get_value(ini, bashThresholdApprentice, "Settings", "Bash Threshold : Apprentice", "; The current amount of 2 * health + stamina to bash a apprentice lock.");
 	ini::get_value(ini, bashThresholdAdept, "Settings", "Bash Threshold : Adept", "; The current amount of 2 * health + stamina to bash a adept lock.");
 
-	ini::get_value(ini, text, "Settings", "Message : Text", "; The text that is going to be displayed in the HUD. Don't forget to include spaces!");
-	ini::get_value(ini, delimiter, "Settings", "Message : Delimiter", "; The delimiter that is going to be displayed in the HUD. Don't forget to include spaces!");
+	ini::get_value(ini, text, "Settings", "Message : Text", "; The text that is going to be displayed in the HUD.");
+	ini::get_value(ini, delimiter, "Settings", "Message : Delimiter", "; The delimiter that is going to be displayed in the HUD.");
 
 	(void)ini.SaveFile(path);
 }
@@ -30,7 +30,7 @@ Settings::Settings()
 std::string Settings::Message(int a_playerStrength, int a_threshold) const
 {
 
-	return "\n" + text + std::to_string(a_playerStrength).substr(0, std::to_string(a_playerStrength).find(".")) + delimiter + std::to_string(a_threshold);
+	return "\n" + text + " " + std::to_string(a_playerStrength).substr(0, std::to_string(a_playerStrength).find(".")) + " " + delimiter + " " + std::to_string(a_threshold);
 }
 
 int Settings::GetPlayerStrengthMax() const
